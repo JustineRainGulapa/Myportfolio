@@ -1,0 +1,506 @@
+:root {
+    --primary-color: rgb(2, 192, 2);
+    --secondary-color: green;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --card-hover: #eafaf1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: var(--light-color);
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width .3s;
+    position: absolute;
+    bottom: -4px; left: 0;
+}
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 2rem 0 1rem 0;
+    animation: float 3s ease-in-out infinite;
+    border: 6px solid white;
+    box-shadow: 0 4px 24px rgba(44,62,80,0.12);
+    object-fit: cover;
+}
+
+
+
+.typing-effect {
+    font-size: 60px;
+    overflow: hidden;
+    border-right: 2px solid #000; /* Cursor */
+    white-space: nowrap;
+    margin: 0 auto;
+    display: inline-block;
+    animation: 
+        typing 3s steps(22, end) forwards,
+        blink-cursor 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 22ch } /* 22 characters in "Justine Rain S. Gulapa" */
+}
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent }
+    50% { border-color: #ffffff }
+}
+.hero p {
+    font-size: 1.5rem;
+    animation: fadeInUp 1s ease 0.3s forwards;
+    opacity: 0;
+}
+
+/* About Section */
+.about {
+    padding: 4rem 1.5rem;
+    background-color: var(--light-color);
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--primary-color);
+}
+
+.about h2 i {
+    font-size: 1.8rem;
+}
+
+.about p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    max-width: 800px;
+}
+
+.about a {
+    color: var(--secondary-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.about a:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-links a:hover {
+    background-color: var(--card-hover);
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-links a i {
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(2, 192, 2, 0.1);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+/* Hobbies Grid */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.hobby-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-hover);
+}
+
+.hobby-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.hobby-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.hobby-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about {
+        padding: 2rem 1rem;
+    }
+    
+    .about h2 {
+        font-size: 1.75rem;
+    }
+    
+    .hobbies-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.skills {
+    padding: 4rem 2rem 3rem 2rem;
+    background: var(--card-hover);
+}
+.skills-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+.skill-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    padding: 2rem 1.5rem;
+    width: 170px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    animation: fadeInUp 1s;
+}
+.skill-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 6px 24px rgba(44,62,80,0.15);
+}
+.skill-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    transition: color 0.3s, transform 0.3s;
+    animation: bounce 1.5s infinite alternate;
+}
+.skill-card:hover .skill-icon {
+    color: var(--secondary-color);
+    transform: scale(1.15) rotate(-8deg);
+}
+.skill-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.education {
+    padding: 4rem 2rem;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.09);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 6px 24px rgba(44,62,80,0.13);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.7rem;
+}
+
+/* Contact Section Styling */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--light-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--dark-color);
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(2, 192, 2, 0.2);
+}
+
+.form-input::placeholder {
+  color: #95a5a6;
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error-message {
+  display: block;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  height: 1.2rem;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.error-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.success-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--card-hover);
+  color: var(--primary-color);
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  display: none;    
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-form {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .form-label {
+    font-size: 0.95rem;
+  }
+  
+  .form-input {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+  
+  .submit-btn {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px);}
+}
+
+@media (max-width: 900px) {
+    .about-content, .cards-container, .skills-container, .hobbies-grid {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .skills-container, .hobbies-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+}
